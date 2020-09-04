@@ -27,61 +27,63 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| name     | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
+| Column        | Type   | Options     |
+| --------      | ------ | ----------- |
+|nick_name      | string | null: false |
+| email         | string | null: false |
+| password      | string | null: false |
+|first_name     | string | null: false |
+|last_name      | string | null: false |
+|first_name_kana| string | null: false |
+|last_name_kana | string | null: false |
+|birthday       | string | null: false |
 
 ### Association
 
-- has_many :item
-- has_many :product
+- has_many :items
+- has_many :products
 
 ## items テーブル
 
-| Column    | Type   | Options     |
-| ------    | ------ | ----------- |
-| images    | string | null: false |
-|itemsName  | string | null: false |
-|description| string | null: false |
-|category   | string | null: false |
-| status    | string | null: false |
-| feeBurden | string | null: false |
-| prefecture| string | null: false |
-|deliveryDay| string | null: false |
-| price     | string | null: false |
+| Column     | Type   | Options     |
+| ------     | ------ | ----------- |
+|   name     | string | null: false |
+|description | text   | null: false |
+| price      | string | null: false |
+<!-- |category    | string | null: false |
+| status     | string | null: false |
+| feeBurden  | string | null: false |
+| prefecture | string | null: false |
+|delivery_day| string | null: false | -->
 
 ### Association
 
 - has_one :purchase
-- has_many :address
+- has_one :user
 
 ## purchases テーブル
 
 | Column     | Type       | Options                        |
 | -------    | ---------- | ------------------------------ |
-| cardInfo   | string     |                                |
-| expire     | references | null: false, foreign_key: true |
-|securityCode| references | null: false, foreign_key: true |
+| user_id    | references | null: false, foreign_key: true |
+| item_id    | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :item
 - belongs_to :user
-- has_one :address
+- has_one :addresses
 
 ## addresses テーブル
 
-| Column     | Type       | Options                        |
-| -------    | ---------- | ------------------------------ |
-| postCode   | references | null: false, foreign_key: true |
-| prefecture | references | null: false, foreign_key: true |
-| city       | references | null: false, foreign_key: true |
-|   address  | references | null: false, foreign_key: true |
-| phoneNumber| references | null: false, foreign_key: true |
+| Column      | Type       | Options                        |
+| -------     | ---------- | ------------------------------ |
+| post_code   | string     | null: false                    |
+| prefecture  | string     | null: false                    |
+| city        | string     | null: false                    |
+|   address   | string     | null: false                    |
+| phone_number| string     | null: false                    |
 
 ### Association
 
 - belongs_to :purchase
-- belongs_to :user
