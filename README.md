@@ -36,7 +36,7 @@ Things you may want to cover:
 |last_name      | string | null: false |
 |first_name_kana| string | null: false |
 |last_name_kana | string | null: false |
-|birthday       | string | null: false |
+|birthday       | data   | null: false |
 
 ### Association
 
@@ -45,16 +45,16 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column     | Type   | Options     |
-| ------     | ------ | ----------- |
-|   name     | string | null: false |
-|description | text   | null: false |
-| price      | string | null: false |
-<!-- |category    | string | null: false |
-| status     | string | null: false |
-| feeBurden  | string | null: false |
-| prefecture | string | null: false |
-|delivery_day| string | null: false | -->
+| Column        | Type   | Options     |
+| ------        | ------ | ----------- |
+|   name        | string | null: false |
+|description    | text   | null: false |
+| price         | string | null: false |
+|category_id    | integer| null: false |
+| status_id     | integer| null: false |
+| feeBurden_id  | integer| null: false |
+| prefecture_id | integer| null: false |
+|delivery_day_id| integer| null: false |
 
 ### Association
 
@@ -82,7 +82,8 @@ Things you may want to cover:
 | prefecture  | string     | null: false                    |
 | city        | string     | null: false                    |
 |   address   | string     | null: false                    |
-| phone_number| string     | null: false                    |
+|  building   | string     | null: false                    |
+| phone_number| string     |                                |
 
 ### Association
 
