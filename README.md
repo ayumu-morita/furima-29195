@@ -41,32 +41,33 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_many :products
+- has_many :purchases
 
 ## items テーブル
 
-| Column        | Type   | Options     |
+| Column        | Type   | Options                        |
 | ------        | ------ | ----------- |
-|   name        | string | null: false |
-|description    | text   | null: false |
-| price         | string | null: false |
-|category_id    | integer| null: false |
-| status_id     | integer| null: false |
-| feeBurden_id  | integer| null: false |
-| prefecture_id | integer| null: false |
-|delivery_day_id| integer| null: false |
+|   user_id     | string | null: false, foreign_key: true |
+|   name        | string | null: false                    |
+|description    | text   | null: false                    |
+| price         | string | null: false                    |
+|category_id    | integer| null: false                    |
+| status_id     | integer| null: false                    |
+| feeBurden_id  | integer| null: false                    |
+| prefecture_id | integer| null: false                    |
+|delivery_day_id| integer| null: false                    |
 
 ### Association
 
 - has_one :purchase
-- has_one :user
+- belongs_to :user
 
 ## purchases テーブル
 
 | Column     | Type       | Options                        |
 | -------    | ---------- | ------------------------------ |
-| user_id    | references | null: false, foreign_key: true |
-| item_id    | references | null: false, foreign_key: true |
+| user       | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -79,11 +80,11 @@ Things you may want to cover:
 | Column      | Type       | Options                        |
 | -------     | ---------- | ------------------------------ |
 | post_code   | string     | null: false                    |
-| prefecture  | string     | null: false                    |
+|prefecture_id| integer    | null: false                    |
 | city        | string     | null: false                    |
 |   address   | string     | null: false                    |
-|  building   | string     | null: false                    |
-| phone_number| string     |                                |
+|  building   | string     |                                |
+| phone_number| string     | null: false                    |
 
 ### Association
 
