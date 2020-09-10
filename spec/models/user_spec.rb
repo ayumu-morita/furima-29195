@@ -47,9 +47,15 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
-      it 'パスワードが半角英数混合でない' do
+      it 'パスワードが半角英数混合でない(半角英字のみ)' do
         @user.password = 'bbbaaa'
         @user.password_confirmation = 'bbbaaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
+      end
+      it 'パスワードが半角英数混合でない(半角数字のみ)' do
+        @user.password = '111111'
+        @user.password_confirmation = '111111'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
       end
