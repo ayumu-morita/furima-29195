@@ -11,7 +11,11 @@ class Item < ApplicationRecord
   belongs_to_active_hash :status
   
 
-  validates :title, :text, :category, :delivery_day, :fee_burden, :prefecture, :status presence: true
+  validates :title, :text, :name, :description, :price, :category_id, :delivery_day_id, :fee_burden_id, :prefecture_id, :status_id, presence: true
+
+  validates_inclusion_of :price, in: 300..999999 
+
+  validates :price, format: {with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{6,100}+\z/, message: 'Include both letters and numbers'}
 
   validates :category_id, numericality: { other_than: 1 }
   validates :delivery_day_id, numericality: { other_than: 1 }

@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -37,8 +38,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:title,:text,:category_id, :delivery_day, :fee_burden, :prefecture, :status)
-    # imageカラムのDBへの保存を許可↓
-    params.require(:item).permit(:content, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:title,:text,:category_id, :delivery_day_id, :fee_burden_id, :prefecture_id, :status_id, :image).merge(user_id: current_user.id)
   end
 end
