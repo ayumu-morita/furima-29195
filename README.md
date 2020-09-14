@@ -53,7 +53,7 @@ Things you may want to cover:
 | price         | integer  | null: false                    |
 |category_id    | integer  | null: false                    |
 | status_id     | integer  | null: false                    |
-| feeBurden_id  | integer  | null: false                    |
+| fee_burden_id  | integer  | null: false                    |
 | prefecture_id | integer  | null: false                    |
 |delivery_day_id| integer  | null: false                    |
 
