@@ -14,7 +14,7 @@ class Item < ApplicationRecord
 
   validates_inclusion_of :price, in: 300..999_999
 
-  validates :price, format: { with: /\A[a-zA-Z0-9]+\z/, message: 'Price Half-width number'}
+  validates :price, format: { with: /\A[a-zA-Z0-9]+\z/, message: 'Price Half-width number' }
 
   with_options numericality: { other_than: 1 } do
     validates :category_id
