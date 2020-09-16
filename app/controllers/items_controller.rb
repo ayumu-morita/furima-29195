@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
         redirect_to action: :edit
       end
     else
-      redirect_to action: :edit
+      redirect_to action: :show
     end
   end
 
