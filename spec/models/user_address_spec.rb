@@ -9,6 +9,14 @@ describe UserAddress do
       it 'user_id, item_id, token, post_code, prefecture_id,city, address, building, phone_numberが存在すれば登録できる' do
         expect(@purchase).to be_valid
       end
+      it '建物名があっても登録できる' do
+        @purchase.building = 'ラフォーレ高橋'
+        expect(@purchase).to be_valid
+      end
+      it '建物名がなくても登録できる' do
+        @purchase.building = ''
+        expect(@purchase).to be_valid
+      end
     end
 
     context '商品購入がうまくいかないとき' do
@@ -51,6 +59,11 @@ describe UserAddress do
         @purchase.phone_number = '123456789123'
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include('Phone number is invalid')
+      end
+      it '都道府県はid:1が選択されている場合に購入できない' do
+        @purchase.prefecture_id = '1'
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("Prefecture can't be blank")
       end
     end
   end

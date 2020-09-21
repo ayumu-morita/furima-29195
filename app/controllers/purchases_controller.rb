@@ -3,15 +3,12 @@ class PurchasesController < ApplicationController
   before_action :move_to_root
 
   def index
-    @item = Item.find(params[:item_id])
     redirect_to root_path if @item.user_id == current_user.id
     @purchase = Purchase.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchase = UserAddress.new(purchase_params)
-    # binding.pry
     if @purchase.valid?
       pay_item
       @purchase.save
